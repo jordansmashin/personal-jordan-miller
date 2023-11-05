@@ -1,17 +1,33 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "Warmup-jordan-miller"
+  title: "Jordan Miller's Website Warmup"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: About
+      - href: articles/index.qmd
+        text: Articles 
+
+  sidebar:
+    - id: articles
+      title: "Articles"
+      style: "docked"
+      background: light
+      collapse-level: 2
+      contents: 
+        - text: "Article 1"
+          href:  articles/article_01.qmd
+        - text: "Article 2"
+          href:  articles/article_02.qmd
 
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
     toc: true
 
