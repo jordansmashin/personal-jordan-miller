@@ -9,7 +9,7 @@ website:
       - href: index.qmd
         text: Home
       - href: about.qmd
-        text: About
+        text: About me
       - href: articles/index.qmd
         text: Articles 
 
@@ -20,9 +20,9 @@ website:
       background: light
       collapse-level: 2
       contents: 
-        - text: "Article 1"
+        - text: "Article 1: Chessboard Problem"
           href:  articles/article_01.qmd
-        - text: "Article 2"
+        - text: "Article 2: Sum of a Range Problem"
           href:  articles/article_02.qmd
 
 format:

@@ -2,4 +2,4 @@
 title:  "Articles"
 ---
 
-The articles on this site document the use of JavaScript in various contexts, and serve as examples for students looking to write about JavaScript in the Quarto framework.
+This is the home page to the articles section of the website. Feel free to use the navigation bar to the left to see some of the projects we have been working on throughout the course of the year

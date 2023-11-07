@@ -1,5 +1,21 @@
 ---
-title: "About"
+title: "About me"
 ---
 
-About this site
+<style>
+.center 
+{
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 15% !important;
+}
+img
+{
+    border: 1px solid #000000 !important;
+}
+</style>
+
+<img src="/images/selfie.jpg" class="center" style="border-block: 50%;">
+
+Hey there, I'm Jordan Miller, and I'm from Georgetown, Kentucky. Right now, I'm in college pursuing a business administration major and computer science minor. When I'm not working or doing homework, you can find me messing around with resin to make cool furniture pieces. It's a great stress reliever after all the hustle and bustle of life. Even when I start to doubt what I should be doing my family has always been cheering me on and pushing me to do my best, whether it's school or work so that I can always be proud of what I have accomplished.

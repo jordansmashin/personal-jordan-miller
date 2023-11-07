@@ -2,4 +2,20 @@
 title: "Welcome!"
 ---
 
-this is the home page
+Welcome to the home page for my CSC 324 website warmup. this website was created as an introduction to html and javascript for our class. Feel free to use the navigation bars above or to the left for more information about myself and what we have been doing in the class over the course of the semester.
+
+<style>
+.center 
+{
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 50% !important;
+}
+img
+{
+    border: 1px solid #000000 !important;
+}
+</style>
+
+<img src="/images/georgetownCollege.jpg" class="center" style="border-radius: 50%;">

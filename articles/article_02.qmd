@@ -1,0 +1,48 @@
+---
+title: "Article 2: Chapter 4 Sum of a Range"
+---
+
+In chapter 4 of eleqoent javascript, we were assigned to find the sum of a range by first writing a range function
+that created an array of numbers based on a start and ending number provided by the user. Next we were instructed
+to write a sum function that took the array from our range function and provided the sum of all its numbers.
+
+The exact wording was as follows:
+
+```
+Write a range function that takes two arguments, start and end, and returns an array containing all the numbers 
+from start up to (and including) end.
+
+Next, write a sum function that takes an array of numbers and returns the sum of these numbers. Run the example
+program and see whether it does indeed return 55.
+```
+
+For my solution to the range function part I used basic iteration to start with the beginning number and keep going
+until it reached the end number provided. This was done by pushing the elements that were iterated into a blank 
+array I defined at the start after they were looked at to see if they were the ending number.
+
+The code looked like this:
+
+```js
+function range(start, end) {
+    const result = [];
+    for (let i = start; i <= end; i++) {
+      result.push(i);
+    }
+    return result;
+  }
+```
+
+Next, looking at the sum function I used the reduce method to simplify the array from the range function into one
+singular value that can be called the sum of the range.
+
+The code looked like this:
+
+```js
+function sum(numbers) {
+    return numbers.reduce((total, number) => total + number, 0);
+  }
+```
+
+At the time I had used AI assistance to help me understand the reduce method as a solution to my problem, mainly
+the total and number parts. total being the number provided by reducing the range function to one value, and 
+number being the current element being proccessed.

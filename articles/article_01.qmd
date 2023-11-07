@@ -1,0 +1,61 @@
+---
+title: "Article 1: Chapter 2 making a chessboard "
+---
+
+In chapter 2 of eleoquent javascript we were asked to make a chessboard that consisted of # and empty space
+in an alternating sequence. The criteria was that you had to make an 8 x 8 grid consisting of these alternating
+symbols to construct the chessboard using newlines to go to the next set. Afterwards we were challenged to modify
+the code in order to work with any parameters for the height and width of the chessboard, even if it was uneven.
+And this is were this seemingly easy problem at first became a lot harder. The main problem being that it wasn't 
+too hard to make a chessboard that followed an even number as the paramater, but odd numbers caused some issues.
+
+The exact wording of the problem was as follows:
+
+```
+Write a program that creates a string that represents an 8×8 grid, using newline characters to separate lines. At each position of the grid there is either a space or a "#" character. The characters should form a chessboard.
+
+Passing this string to console.log should show something like this:
+
+ # # # #
+# # # # 
+ # # # #
+# # # # 
+ # # # #
+# # # # 
+ # # # #
+# # # #
+
+When you have a program that generates this pattern, define a binding size = 8 and change the program so that it
+works for any size, outputting a grid of the given width and height.
+```
+
+To accomplish the desired result I had to first define a height and width parameter that the user provides for the
+program. Then using nested for loops I had it check the rows and collumns to see where the chessboard was currently
+at with the main kicker being the if statement that determined whether the next element in the chessboard was to be
+a # or empty space. Finally the loop created a newline after it had reached the desired width for the line, and
+continued until it reached the desired height.
+
+My code was as follows:
+
+```js
+const height = 8;
+const width = 8;
+let chessboard = '';
+
+for (let row = 0; row < height; row++) {
+  for (let col = 0; col < width; col++) {
+    if ((row + col) % 2 === 0) {
+      chessboard += ' ';
+    } else {
+      chessboard += '#';
+    }
+  }
+  chessboard += '\n';
+}
+
+console.log(chessboard);
+```
+
+This solution took a lot of AI assistance when it came to trying to make my program run with odd and even
+parameters. Mainly the newline part of the code was where I got stuck on, but after some coaching I managed to get
+a solution that fit my purposes.
