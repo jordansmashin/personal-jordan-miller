@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Jordan Miller's Website Warmup"
+  site-path: "/warmup-jordan-miller/"
   navbar:
     left:
       - href: index.qmd
