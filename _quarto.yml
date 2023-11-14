@@ -25,6 +25,8 @@ website:
           href:  articles/article_01.qmd
         - text: "Article 2: Sum of a Range Problem"
           href:  articles/article_02.qmd
+        - text: "Article 3: Password Generator"
+          href: articles/article_03.qmd 
 
 format:
   html:
