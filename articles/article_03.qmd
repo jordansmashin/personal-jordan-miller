@@ -1,3 +1,90 @@
 ---
 title: "Article 3: Password generator"
 ---
+
+```{=html}
+<style>
+    #password-generator-container {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #password-generator-container h1 {
+            color: #333;
+        }
+
+        #password-generator-container div {
+            margin-bottom: 15px;
+        }
+
+        #password-generator-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        #password-generator-container input {
+            padding: 8px;
+            font-size: 1em;
+        }
+
+        #password-generator-container button {
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        #password-generator-container button:hover {
+            background-color: #45a049;
+        }
+
+        #password-generator-container #password {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+</style>
+
+<body>
+  <div id="password-generator-container">
+      <h1>Password Generator</h1>
+      <div>
+          <label for="length">Password Length:</label>
+          <input type="number" id="length" value="12" min="1" max="1000">
+      </div>
+
+        <h1>Include Special Characters</h1>
+        <form>
+            <input type="radio" id="special" name = "includeSpecial" value = "yes"
+            <label for="special">Yes</label><br>
+            <input type="radio" id="special" name = "includeSpecial" value = "no"
+            <label for="special">No</label><br>
+        </form>
+
+        <h1>Include uppercase letters</h1>
+        <form>
+            <input type="radio" id="uppercase" name = "includeUpper" value = "yes"
+            <label for="special">Yes</label><br>
+            <input type="radio" id="uppercase" name = "includeUpper" value = "no"
+            <label for="special">No</label><br>
+        </form>
+
+        <h1>Include numbers</h1>
+        <form>
+            <input type="radio" id="number" name = "includeNumbers" value = "yes"
+            <label for="special">Yes</label><br>
+            <input type="radio" id="special" name = "includeNumbers" value = "no"
+            <label for="special">No</label><br>
+        </form>
+
+      <button onclick="generatePassword()">Generate Password</button>
+      <div id="password"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+```
