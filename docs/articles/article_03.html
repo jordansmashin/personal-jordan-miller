@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Jordan Miller’s Website Warmup - Article 3: Password generator</title>
+<title>Jordan Miller’s personal website - Article 3: Password generator</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -72,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Jordan Miller’s Website Warmup</span>
+    <span class="navbar-title">Jordan Miller’s personal website</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -92,6 +126,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="../articles/index.html" rel="" target="">
  <span class="menu-text">Articles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../articles/passwordGenerator.html" rel="" target="">
+ <span class="menu-text">Password Generator</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -140,7 +178,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#creating-password-length" id="toc-creating-password-length" class="nav-link active" data-scroll-target="#creating-password-length">Creating Password Length</a></li>
+  <li><a href="#adding-in-the-checkboxes-for-password-generation" id="toc-adding-in-the-checkboxes-for-password-generation" class="nav-link" data-scroll-target="#adding-in-the-checkboxes-for-password-generation">Adding in the checkboxes for password generation</a></li>
+  <li><a href="#password-generation" id="toc-password-generation" class="nav-link" data-scroll-target="#password-generation">Password Generation</a></li>
+  <li><a href="#copying-to-the-clipboard" id="toc-copying-to-the-clipboard" class="nav-link" data-scroll-target="#copying-to-the-clipboard">Copying to the clipboard</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -162,86 +209,173 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<style>
-    #password-generator-container {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
+<p>For my major improvement I chose to make a password generator. The features for password generation that I decided to include were: the length of the password and whether or not to include numbers, special characters and uppercase letters</p>
+<section id="creating-password-length" class="level2">
+<h2 class="anchored" data-anchor-id="creating-password-length">Creating Password Length</h2>
+<p><strong>Html</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"password-generator-container"</span><span class="kw">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;label</span> <span class="er">for</span><span class="ot">=</span><span class="st">"passwordLength"</span><span class="kw">&gt;</span>Password Length:<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">"number"</span> <span class="er">id</span><span class="ot">=</span><span class="st">"passwordLength"</span> <span class="er">min</span><span class="ot">=</span><span class="st">"2"</span> <span class="er">max</span><span class="ot">=</span><span class="st">"50"</span> <span class="er">value</span><span class="ot">=</span><span class="st">"8"</span><span class="kw">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>the html code uses the built in label and input methods. I use the input method to allow the user to input a number into the provided box. I have it set to have a default value of 8 when you first load the page, with a minimum password size of 2 and a maximum size of 50. As for the label method, all it does is add the words password length above the input box</p>
+<p><strong>Javascript</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> password <span class="op">=</span> <span class="st">''</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">generatePassword</span>() {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> length <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'passwordLength'</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The javascript code at this point is not too special and is only beginning to make the function by setting up some of the variables and assigning them values</p>
+</section>
+<section id="adding-in-the-checkboxes-for-password-generation" class="level2">
+<h2 class="anchored" data-anchor-id="adding-in-the-checkboxes-for-password-generation">Adding in the checkboxes for password generation</h2>
+<p>Next up I added in the checkboxes for including special characters, uppercase letters, and numbers by including the following code:</p>
+<p><strong>Html</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"password-generator-container"</span><span class="kw">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;div&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">"checkbox"</span> <span class="er">id</span><span class="ot">=</span><span class="st">"includeUppercase"</span> <span class="er">checked</span><span class="kw">&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;label</span> <span class="er">for</span><span class="ot">=</span><span class="st">"includeUppercase"</span><span class="kw">&gt;</span>Include Uppercase<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;div&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">"checkbox"</span> <span class="er">id</span><span class="ot">=</span><span class="st">"includeNumbers"</span> <span class="er">checked</span><span class="kw">&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;label</span> <span class="er">for</span><span class="ot">=</span><span class="st">"includeNumbers"</span><span class="kw">&gt;</span>Include Numbers<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;div&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">"checkbox"</span> <span class="er">id</span><span class="ot">=</span><span class="st">"includeSpecialChars"</span> <span class="er">checked</span><span class="kw">&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;label</span> <span class="er">for</span><span class="ot">=</span><span class="st">"includeSpecialChars"</span><span class="kw">&gt;</span>Include Special Characters<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The following html code adds in the check boxes using the aforementioned input and label methods, but this time setting the type in input to checkbox.</p>
+<p><strong>Javascript</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">generatePassword</span>() {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> includeUppercase <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'includeUppercase'</span>)<span class="op">.</span><span class="at">checked</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> includeNumbers <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'includeNumbers'</span>)<span class="op">.</span><span class="at">checked</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> includeSpecialChars <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'includeSpecialChars'</span>)<span class="op">.</span><span class="at">checked</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> lowercaseChars <span class="op">=</span> <span class="st">'abcdefghijklmnopqrstuvwxyz'</span><span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> uppercaseChars <span class="op">=</span> <span class="st">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span><span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> numberChars <span class="op">=</span> <span class="st">'0123456789'</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> specialChars <span class="op">=</span> <span class="st">'!#$?%&amp;'</span><span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> chars <span class="op">=</span> lowercaseChars<span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (includeUppercase) {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        chars <span class="op">+=</span> uppercaseChars<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (includeNumbers) {</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        chars <span class="op">+=</span> numberChars<span class="op">;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (includeSpecialChars) {</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        chars <span class="op">+=</span> specialChars<span class="op">;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>with these parts added to the function, you start to see that I have defined a starting set of letters available to be used in password generation named chars, whose starting value is set to the lowercase letter alphabet. When the user checks one of the boxes to include a specific feature, then it adds the provided array to the existing chars variable.</p>
+</section>
+<section id="password-generation" class="level2">
+<h2 class="anchored" data-anchor-id="password-generation">Password Generation</h2>
+<p>Now that most of the function for creating the array that the password will generate from, it is time to actually include the code to randomly generate from it.</p>
+<p><strong>Html</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"password-generator-container"</span><span class="kw">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;div&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;button</span> <span class="er">onclick</span><span class="ot">=</span><span class="st">"generatePassword()"</span><span class="kw">&gt;</span>Generate Password<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;label</span> <span class="er">for</span><span class="ot">=</span><span class="st">"generatedPassword"</span><span class="kw">&gt;</span>Generated Password:<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">"text"</span> <span class="er">id</span><span class="ot">=</span><span class="st">"generatedPassword"</span> <span class="er">readonly</span><span class="kw">&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Javascript</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">generatePassword</span>() {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    password <span class="op">=</span> <span class="st">''</span><span class="op">;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> length<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> randomIndex <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> chars<span class="op">.</span><span class="at">length</span>)<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        password <span class="op">+=</span> chars<span class="op">.</span><span class="fu">charAt</span>(randomIndex)<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'generatedPassword'</span>)<span class="op">.</span><span class="at">value</span> <span class="op">=</span> password<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This part of the code is the bread and butter of the function as it is what randomly selects characters from the array to add to the password. Starting from nothing, the code continues to loop until it reaches the specified length from the password length the user set in the beginning. By using math.floor I ensure that the code picks a whole number, which is needed to be able to select the corresponding character out of the array, and math.random is used to generate that random number.</p>
+</section>
+<section id="copying-to-the-clipboard" class="level2">
+<h2 class="anchored" data-anchor-id="copying-to-the-clipboard">Copying to the clipboard</h2>
+<p>This part of the program was something I really wanted to add, but had no clue how to go about doing it. So after consulting chatGPT for a while I finally managed to get the functionality into my code, where I then styled it as desired.</p>
+<p>The chat logs were as follows</p>
+<pre><code>Me:
+how do i add a copy to clipboard option for my generated password
 
-        #password-generator-container h1 {
-            color: #333;
-        }
-
-        #password-generator-container div {
-            margin-bottom: 15px;
-        }
-
-        #password-generator-container label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 1.2em;
-        }
-
-        #password-generator-container input {
-            padding: 8px;
-            font-size: 1em;
-        }
-
-        #password-generator-container button {
-            padding: 10px;
-            font-size: 1em;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-        }
-
-        #password-generator-container button:hover {
-            background-color: #45a049;
-        }
-
-        #password-generator-container #password {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-</style>
-
-
-  <div id="password-generator-container">
-      <h1>Password Generator</h1>
-      <div>
-          <label for="length">Password Length:</label>
-          <input type="number" id="length" value="12" min="1" max="1000">
-      </div>
-
-        <h1>Include Special Characters</h1>
-        <form>
-            <input type="radio" id="special" name="includeSpecial" value="yes" <label="" for="special">Yes<br>
-            <input type="radio" id="special" name="includeSpecial" value="no" <label="" for="special">No<br>
-        </form>
-
-        <h1>Include uppercase letters</h1>
-        <form>
-            <input type="radio" id="uppercase" name="includeUpper" value="yes" <label="" for="special">Yes<br>
-            <input type="radio" id="uppercase" name="includeUpper" value="no" <label="" for="special">No<br>
-        </form>
-
-        <h1>Include numbers</h1>
-        <form>
-            <input type="radio" id="number" name="includeNumbers" value="yes" <label="" for="special">Yes<br>
-            <input type="radio" id="special" name="includeNumbers" value="no" <label="" for="special">No<br>
-        </form>
-
-      <button onclick="generatePassword()">Generate Password</button>
-      <div id="password"></div>
-  </div>
-
-  <script src="script.js"></script>
+chatGPT:
+You can add a "Copy to Clipboard" functionality to your generated password by modifying the JavaScript code. Here's an updated version of the script that includes a function for copying the generated password to the clipboard:</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">generatePassword</span>() {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> length <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'passwordLength'</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> includeUppercase <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'includeUppercase'</span>)<span class="op">.</span><span class="at">checked</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> includeNumbers <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'includeNumbers'</span>)<span class="op">.</span><span class="at">checked</span><span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> includeSpecialChars <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'includeSpecialChars'</span>)<span class="op">.</span><span class="at">checked</span><span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> lowercaseChars <span class="op">=</span> <span class="st">'abcdefghijklmnopqrstuvwxyz'</span><span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> uppercaseChars <span class="op">=</span> <span class="st">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span><span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> numberChars <span class="op">=</span> <span class="st">'0123456789'</span><span class="op">;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> specialChars <span class="op">=</span> <span class="st">'!@#$%^&amp;*()_+[]{}|;:,.&lt;&gt;?'</span><span class="op">;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> chars <span class="op">=</span> lowercaseChars<span class="op">;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (includeUppercase) {</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        chars <span class="op">+=</span> uppercaseChars<span class="op">;</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (includeNumbers) {</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        chars <span class="op">+=</span> numberChars<span class="op">;</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (includeSpecialChars) {</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        chars <span class="op">+=</span> specialChars<span class="op">;</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> password <span class="op">=</span> <span class="st">''</span><span class="op">;</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> length<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> randomIndex <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> chars<span class="op">.</span><span class="at">length</span>)<span class="op">;</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        password <span class="op">+=</span> chars<span class="op">.</span><span class="fu">charAt</span>(randomIndex)<span class="op">;</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> generatedPasswordInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'generatedPassword'</span>)<span class="op">;</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    generatedPasswordInput<span class="op">.</span><span class="at">value</span> <span class="op">=</span> password<span class="op">;</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Add copy to clipboard functionality</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> copyButton <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'copyButton'</span>)<span class="op">;</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    copyButton<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>        generatedPasswordInput<span class="op">.</span><span class="fu">select</span>()<span class="op">;</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>        <span class="bu">document</span><span class="op">.</span><span class="fu">execCommand</span>(<span class="st">'copy'</span>)<span class="op">;</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>        <span class="fu">alert</span>(<span class="st">'Password copied to clipboard!'</span>)<span class="op">;</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>In your HTML, add a button for copying the password:</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ... existing HTML code ... --&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;button</span> <span class="er">id</span><span class="ot">=</span><span class="st">"copyButton"</span><span class="kw">&gt;</span>Copy to Clipboard<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ... existing HTML code ... --&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>chatGPT:
+This code selects the content of the generated password input field when the "Copy to Clipboard" button is clicked and executes the document.execCommand('copy') command to copy the selected text to the clipboard. It also displays an alert to notify the user that the password has been copied.</code></pre>
+<p>It was at this point that I realized what the code was doing, but vs code did not like the document.execCommand(‘copy’) line. when I told chatGPT this it provided me with the following more up to date version of the code which did work</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> copyButton <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'#copyButton'</span>)<span class="op">;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>copyButton<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(password)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">alert</span>(<span class="st">'Password copied to clipboard!'</span>)<span class="op">;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">catch</span>(err <span class="kw">=&gt;</span> {</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">'Unable to copy to clipboard'</span><span class="op">,</span> err)<span class="op">;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        })<span class="op">;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

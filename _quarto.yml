@@ -3,8 +3,8 @@ project:
   output-dir: docs
 
 website:
-  title: "Jordan Miller's Website Warmup"
-  site-path: "/warmup-jordan-miller/"
+  title: "Jordan Miller's personal website"
+  site-path: "/personal-jordan-miller/"
   navbar:
     left:
       - href: index.qmd
@@ -13,6 +13,8 @@ website:
         text: About me
       - href: articles/index.qmd
         text: Articles 
+      - href: articles/passwordGenerator.qmd
+        text: Password Generator
 
   sidebar:
     - id: articles

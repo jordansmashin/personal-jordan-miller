@@ -2,12 +2,231 @@
 title: "Article 3: Password generator"
 ---
 
-```{=html}
+For my major improvement I chose to make a password generator. The features for password generation that I decided to include were: the length of the password and whether or not to include numbers, special characters and uppercase letters
+
+## Creating Password Length
+
+**Html** 
+```html
+<div id="password-generator-container">
+    <div>
+        <label for="passwordLength">Password Length:</label>
+        <input type="number" id="passwordLength" min="2" max="50" value="8">
+    </div>
+```
+
+the html code uses the built in label and input methods. I use the input method to allow the user to input a number
+into the provided box. I have it set to have a default value of 8 when you first load the page, with a minimum 
+password size of 2 and a maximum size of 50. As for the label method, all it does is add the words password length 
+above the input box
+
+**Javascript** 
+
+```js
+let password = '';
+
+function generatePassword() {
+const length = document.getElementById('passwordLength').value;
+}
+```
+
+The javascript code at this point is not too special and is only beginning to make the function by setting up some of the variables and assigning them values
+
+## Adding in the checkboxes for password generation
+
+Next up I added in the checkboxes for including special characters, uppercase letters, and numbers by including the following code:
+
+**Html**
+
+```html
+<body>
+    <div id="password-generator-container">
+        <div>
+            <input type="checkbox" id="includeUppercase" checked>
+            <label for="includeUppercase">Include Uppercase</label>
+        </div>
+        <div>
+            <input type="checkbox" id="includeNumbers" checked>
+            <label for="includeNumbers">Include Numbers</label>
+        </div>
+        <div>
+            <input type="checkbox" id="includeSpecialChars" checked>
+            <label for="includeSpecialChars">Include Special Characters</label>
+        </div>
+</body>
+</html>
+```
+The following html code adds in the check boxes using the aforementioned input and label methods, but this time setting the type in input to checkbox. 
+
+**Javascript**
+
+```js
+function generatePassword() {
+    const includeUppercase = document.getElementById('includeUppercase').checked;
+    const includeNumbers = document.getElementById('includeNumbers').checked;
+    const includeSpecialChars = document.getElementById('includeSpecialChars').checked;
+
+    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numberChars = '0123456789';
+    const specialChars = '!#$?%&';
+
+    let chars = lowercaseChars;
+
+    if (includeUppercase) {
+        chars += uppercaseChars;
+    }
+
+    if (includeNumbers) {
+        chars += numberChars;
+    }
+
+    if (includeSpecialChars) {
+        chars += specialChars;
+    }
+}
+```
+
+with these parts added to the function, you start to see that I have defined a starting set of letters available to be used in password generation named chars, whose starting value is set to the lowercase letter alphabet. When the user checks one of the boxes to include a specific feature, then it adds the provided array to the existing chars variable. 
+
+## Password Generation
+
+Now that most of the function for creating the array that the password will generate from, it is time to actually include the code to randomly generate from it. 
+
+**Html**
+
+```html
+<body>
+    <div id="password-generator-container">
+        <div>
+            <button onclick="generatePassword()">Generate Password</button>
+    </div>
+    <div>
+        <label for="generatedPassword">Generated Password:</label>
+        <input type="text" id="generatedPassword" readonly>
+    </div>
+</body>
+</html>
+```
+
+**Javascript**
+
+```js
+function generatePassword() {
+    password = ''; 
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * chars.length);
+        password += chars.charAt(randomIndex);
+    }
+
+    document.getElementById('generatedPassword').value = password;
+}
+```
+This part of the code is the bread and butter of the function as it is what randomly selects characters from the array to add to the password. Starting from nothing, the code continues to loop until it reaches the specified length from the password length the user set in the beginning. By using math.floor I ensure that the code picks a whole number, which is needed to be able to select the corresponding character out of the array, and math.random is used to generate that random number.
+
+## Copying to the clipboard
+
+This part of the program was something I really wanted to add, but had no clue how to go about doing it. So after consulting chatGPT for a while I finally managed to get the functionality into my code, where I then styled it as desired.
+
+The chat logs were as follows
+
+```
+Me:
+how do i add a copy to clipboard option for my generated password
+
+chatGPT:
+You can add a "Copy to Clipboard" functionality to your generated password by modifying the JavaScript code. Here's an updated version of the script that includes a function for copying the generated password to the clipboard:
+```
+
+```js
+function generatePassword() {
+    const length = document.getElementById('passwordLength').value;
+    const includeUppercase = document.getElementById('includeUppercase').checked;
+    const includeNumbers = document.getElementById('includeNumbers').checked;
+    const includeSpecialChars = document.getElementById('includeSpecialChars').checked;
+
+    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numberChars = '0123456789';
+    const specialChars = '!@#$%^&*()_+[]{}|;:,.<>?';
+
+    let chars = lowercaseChars;
+
+    if (includeUppercase) {
+        chars += uppercaseChars;
+    }
+
+    if (includeNumbers) {
+        chars += numberChars;
+    }
+
+    if (includeSpecialChars) {
+        chars += specialChars;
+    }
+
+    let password = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * chars.length);
+        password += chars.charAt(randomIndex);
+    }
+
+    const generatedPasswordInput = document.getElementById('generatedPassword');
+    generatedPasswordInput.value = password;
+
+    // Add copy to clipboard functionality
+    const copyButton = document.getElementById('copyButton');
+    copyButton.addEventListener('click', () => {
+        generatedPasswordInput.select();
+        document.execCommand('copy');
+        alert('Password copied to clipboard!');
+    });
+}
+```
+
+```
+In your HTML, add a button for copying the password:
+```
+
+```html
+<!-- ... existing HTML code ... -->
+<div>
+    <button id="copyButton">Copy to Clipboard</button>
+</div>
+<!-- ... existing HTML code ... -->
+```
+
+```
+chatGPT:
+This code selects the content of the generated password input field when the "Copy to Clipboard" button is clicked and executes the document.execCommand('copy') command to copy the selected text to the clipboard. It also displays an alert to notify the user that the password has been copied.
+```
+
+It was at this point that I realized what the code was doing, but vs code did not like the document.execCommand('copy') line. when I told chatGPT this it provided me with the following more up to date version of the code which did work
+
+```js
+const copyButton = document.querySelector('#copyButton');
+
+copyButton.addEventListener('click', () => {
+    navigator.clipboard.writeText(password)
+        .then(() => {
+            alert('Password copied to clipboard!');
+        })
+        .catch(err => {
+            console.error('Unable to copy to clipboard', err);
+        });
+});
+```
+
+## Styling
+
+For those interested in the styling of the password generator, the code is as follows:
+
+```html
 <style>
     #password-generator-container {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
+            background-color: #ADD8E6;
         }
 
         #password-generator-container h1 {
@@ -47,44 +266,26 @@ title: "Article 3: Password generator"
             font-size: 1.5em;
             margin-bottom: 20px;
         }
+
+        #password-generator-container #generatedPassword {
+            white-space: nowrap;
+            overflow-x: scroll; 
+            max-width: 100%;
+        }
+
+        #password-generator-container #copyButton {
+            cursor: pointer;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px;
+        }
+
+        #password-generator-container #copyButton:hover {
+            background-color: #0077A2;
+        }
 </style>
-
-<body>
-  <div id="password-generator-container">
-      <h1>Password Generator</h1>
-      <div>
-          <label for="length">Password Length:</label>
-          <input type="number" id="length" value="12" min="1" max="1000">
-      </div>
-
-        <h1>Include Special Characters</h1>
-        <form>
-            <input type="radio" id="special" name = "includeSpecial" value = "yes"
-            <label for="special">Yes</label><br>
-            <input type="radio" id="special" name = "includeSpecial" value = "no"
-            <label for="special">No</label><br>
-        </form>
-
-        <h1>Include uppercase letters</h1>
-        <form>
-            <input type="radio" id="uppercase" name = "includeUpper" value = "yes"
-            <label for="special">Yes</label><br>
-            <input type="radio" id="uppercase" name = "includeUpper" value = "no"
-            <label for="special">No</label><br>
-        </form>
-
-        <h1>Include numbers</h1>
-        <form>
-            <input type="radio" id="number" name = "includeNumbers" value = "yes"
-            <label for="special">Yes</label><br>
-            <input type="radio" id="special" name = "includeNumbers" value = "no"
-            <label for="special">No</label><br>
-        </form>
-
-      <button onclick="generatePassword()">Generate Password</button>
-      <div id="password"></div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
 ```
+
+I mostly just messed around with the values for most of the styling until it ended up in the spots that I wanted, and ultimately I am happy with how it turned out
