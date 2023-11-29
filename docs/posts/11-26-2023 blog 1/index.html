@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jordan Miller">
+<meta name="dcterms.date" content="2023-11-26">
+<meta name="description" content="Talks about the pros and cons of Bitcoin mining on the environment and the economy">
+
+<title>Jordan Miller’s personal website - The sustainability of Bitcoin</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Jordan Miller’s personal website</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../articles/index.html" rel="" target="">
+ <span class="menu-text">Articles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../articles/passwordGenerator.html" rel="" target="">
+ <span class="menu-text">Password Generator</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/index.html" rel="" target="">
+ <span class="menu-text">Blogs</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">The sustainability of Bitcoin</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../articles/article_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Article 1: Chessboard Problem</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../articles/article_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Article 2: Sum of a Range Problem</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../articles/article_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Article 3: Password Generator</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The sustainability of Bitcoin</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">cryptocurrency</div>
+    <div class="quarto-category">tech</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Talks about the pros and cons of Bitcoin mining on the environment and the economy
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jordan Miller </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 26, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Since its inception in 2009 with the introduction of Bitcoin, cryptocurrency has become a global phenomenon, sparking controversy and admiration as one of the most esteemed stores of value. Despite its relative youth, the success of cryptocurrency prompts an exploration into its nature and the factors contributing to its widespread adoption. Cryptocurrency, often called crypto, is a digital currency whose value hinges on investor interest, resembling the dynamics of modern-day stocks. However, a crucial distinction lies in its detachment from any specific company. Unlike stocks, which are tethered to a company’s performance, the value of crypto is largely derived from the belief in its sustained success. One way crypto appreciates its value stems from a reduction in the issuance of new coins over time, diminishing the overall supply and amplifying demand for higher-value coins. It has been seen time and again that when the crypto stock of coins is halved the price increases. Just looking at the first Bitcoin halving, the price of one coin shot from $12 to $1032 due to the new scarcity and increased acceptance (Lielacher A. 2023). This unique mechanism enables cryptocurrencies to mimic one of the major requirements to be a successful fiat currency, which is that it needs to be a scarce resource for demand to remain high (Kelleher J. 2023). In fact crypto follows just about every necessary category fiat currency deems necessary, including but not limited to the fact that it is widely accepted, easily divisible, and uniform. An edge that crypto holds over traditional fiat currency as well is the fact that it is impossible to counterfeit it. Since coins are created by multiple people looking at each other’s validations and confirming that everything is true, it is impossible to create a counterfeit coin that can’t be easily found out that it is not real. So what is cryptocurrency really, and how is it made? Understanding how crypto is produced is imperative to grasp its intricate dynamics. Presently, two primary methods dominate the generation of cryptocurrency: proof of work and proof of stake. Proof of work, the traditional approach, entails individuals competing to solve mathematical puzzles, with the winner earning the right to add to the blockchain—a process commonly known as crypto mining. This “mining” is essentially independent contractors acting as auditors to validate transactions, and being paid in the form of the crypto that they are mining for (Hong E. 2023). All of this validation occurs by using a computer to solve the puzzle in a competition to be the fastest, as only one person receives the reward per validation. Initially feasible with minimal hardware, this method now demands specialized computers dedicated to crypto mining due to increased competition. On the other hand, proof of stake involves participants staking their existing crypto holdings to validate transactions on the blockchain, receiving interest in the form of the staked crypto as a reward. This locks people in to the validation process, as leaving before the validation is finished entails losing your staked crypto that you put on the line. This more contemporary method is accessible to newcomers entering the crypto sphere, as it merely requires a financial investment to generate returns. A question arises concerning Bitcoin, the foremost cryptocurrency, and its reluctance to evolve with the times by transitioning to proof of stake. Proposing a shift to this alternative method could potentially revolutionize the entire crypto industry. Such a move by Bitcoin could serve as a catalyst, prompting a collective industry shift away from proof of work. This transformation would usher in a new era for cryptocurrencies, with Bitcoin leading the charge towards a more technologically advanced and sustainable future. If Bitcoin were to embrace proof of stake, it has the potential to instigate a widespread transformation in the crypto landscape, compelling others to follow suit. This paradigm shift could trigger positive changes across economies globally. Embracing technological advancements in cryptocurrency generation could enhance efficiency, accessibility, and sustainability, fostering a positive impact on the entire industry and, by extension, economies at large.   ## Discussion Currently, the top two cryptocurrencies dominating the market are Ethereum and the founder token Bitcoin. Ethereum, while not as old as Bitcoin, has enjoyed rapid success by focusing its platform on smart contracts. Until recently, Ethereum was also running on the traditional proof of work method but realized that it could significantly reduce energy usage on its platform by moving to proof of stake. So, it set forth a plan to transition to proof of stake in stages, allowing for it to make sure that no singular transition would break the platform. This worried the whole industry, as Ethereum was the second biggest cryptocurrency, and doing this transition risked the coin failing completely or even splitting off into multiple different coins, reducing its value. However, Ethereum was very careful with its transition and managed to successfully move from proof of work to proof of stake without a hitch. With the transition, Ethereum saw a reduction in their direct energy usage of 90%. This was huge news as currently, crypto is being cracked down on by countries looking to lower their carbon footprint because crypto mining uses so much energy. There are some upsides to Bitcoin and its proof of work mechanism, though. For one, due to the excessive amount of energy consumed to mine new coins, the value of the coin is much higher and only continues to rise as the amount minted continues to be slashed. It is for this reason that Bitcoin is commonly referred to as digital gold. There is also the fact that Bitcoin is easier to understand than Ethereum, leading to more trust in it as a currency than exists with newer currencies like Ethereum. As mentioned before, the key change from shifting to proof of stake from proof of work is that it consumes significantly less energy than its counterpart. It also eliminates the need for expensive hardware to have a chance at generating the currency, allowing new players to enter the market with ease. With new people joining the market, the value of coins will continue to rise to meet the newfound demand, allowing the crypto industry to grow even further. With all these known benefits, it’s hard to understand why Bitcoin has refrained from shifting to the newer form of generation. After all, a company that follows an unsustainable business model is only doomed to be shut down eventually, whether due to lack of resources or public regulation. This is why so many companies today have adopted methods of giving back to the environment and communities to reduce their carbon footprint and help the communities that they may be impacting. It is important to note that nearly 80% of all our energy is currently being produced by burning fossil fuels (Dilek, Ş. &amp; Furuncu, Y. 2019.). Even more important is the fact that crypto mining requires a significant amount of power for the computer to attempt to calculate the puzzles. Looking at Bitcoin alone, the energy used to mine new coins, if ranked as a country, would place it at 50th place for most energy consumption in the world (Dilek, Ş. &amp; Furuncu, Y. 2019.). For a singular sector of an industry to consume more power than over 150 countries in the world is astonishing, and very sobering when you think about where all that energy is really coming from. Not only that, but its consumption just keeps growing as more people join the competition to mine new coins. This is because only one person gets the prize out of the pool of miners per section of the blockchain, meaning that most people will end up not receiving the prize, but the energy is consumed regardless. There is also the fact that the total coins issued constantly decreases as a part of the model that Bitcoin is built on, leading to even fiercer competition to the equation. Lastly, people continue to buy more specialized equipment to have a competitive advantage, alongside purchasing multiple computers to give them higher odds of being the victor. With this kind of energy consumption, it is clear to see why some countries are already outlawing the process of mining cryptocurrencies to lower global emissions and energy shortages. Even the community’s health is at risk, as the burning of fossil fuels to sustain the energy needed for these operations are responsible for 85% of the sulfur dioxide and nitrogen oxide emissions (Dilek, Ş. &amp; Furuncu, Y. 2019.). is important because air pollution is the fourth most important factor that affects our overall health and leads to nearly 3 million death per year (Dilek, Ş. &amp; Furuncu, Y. 2019.). China, the leader in Bitcoin mining overall, decided to outlaw crypto mining altogether to combat the rapid air pollution that is plaguing their country and reduce the energy drain on their network (Brown, R. 2022). There are some definite advantages to Bitcoin as a currency though. For starters many people believe that due to its decentralized nature, Bitcoin has the possibility of becoming a universal currency (Badea, L. &amp; Claudia, M. 2021). Bitcoin has also been successful in managing to curb its growth to combat inflation (Badea, L. &amp; Claudia, M. 2021). This makes it a highly sought-after investment, as it has proven numerous times that it can weather the inflation in the market and remain relatively unharmed. After all, not many investments can claim that they are able to combat inflation due to the model they are built on, instead they rely completely on the economy staying strong to keep inflation down. There is also the sentiment that Bitcoin is the next stage in the process of money evolution, which just serves to continue to raise its value as it gains trust (Badea, L. &amp; Claudia, M. 2021). In fact, it has become so well trusted that many major retailers have started accepting it as a form of payment, such as Microsoft, Burger King, and AT&amp;T (Badea, L. &amp; Claudia, M. 2021). Lastly, Bitcoin is widely compared to gold, and is believed to be a good asset to invest in for portfolio diversification (Badea, L. &amp; Claudia, M. 2021). It was widely believed that swapping proof of stake from proof of work would be too difficult and risky, with many stating that the risk of the currency forking into two would be highly likely. Ethereum however showed the whole world that swapping to proof of stake was not impossible and could be done without any issues. Ethereum handled this task by splitting its “merge” into multiple stages so that it could verify that each stage passed without a hitch before continuing. After the merger, Ethereum saw a reduction in its energy usage of 99.98%, allowing it to be an environmentally sustainable approach to cryptocurrency (Kapengut, E. &amp; Mizrach, B. 2023). This marks an incredibly significant impact for swapping methods of generation, as one of the biggest issues introduced by Bitcoin mining is its energy usage.</p>
+<p>  ## Analysis As a business model, it is usually in an organization’s best interest to work on environmental sustainability efforts, as they both improve public image and ensure that you will be able to continue doing business for the foreseeable future. Bitcoin, however, does not concern itself with its carbon footprint, as is evident by the fact that it is one of the biggest contributors to global warming despite being so young. It is predicted that Bitcoin alone could lead to up to a two-degree addition to the global temperature (Rho, 2022). This is not the only source to find that Bitcoin is completely unsustainable for the environment; Benjamin Jones from UNM also concluded that there is no future where our planet can sustain the global emissions coming from the mining of Bitcoin. To make matters worse, nearly 40% of the energy used for Bitcoin mining comes from the burning of fossil fuels, which is why we see such high amounts of carbon emissions coming from something that hasn’t even lived a full decade (Bitstamp, 2023). So then, looking at their competitor Ether, we see that fears over the possibility of successfully being able to swap from one mechanism to another are unfounded, as Ethereum managed to perform the merge with no issues. Not only that but as mentioned before, Ethereum saw a reduction in energy consumption by 90%, making it much more sustainable in terms of operating for the future (Giles &amp; Jones, 2022). Looking back at Bitcoin, they have the legitimate worry of being banned in countries for its environmental destruction. China was the most notable country in recent history to ban crypto mining to reduce pollution (Browne, 2022). This ended up being a massive blow to Bitcoin since they were one of the primary areas where many coins were constantly being minted. This uncertainty is yet another reason why Bitcoin should move to proof of stake, as countries are beginning to regulate crypto much more closely. This means that if they do not get their operations under control and follow global interest, they could be forced to shut down altogether (Narain &amp; Moretti, 2022). Looking at all this data, it is clear to see that Bitcoin has an uncertain future ahead of them at the moment. If they do not decide to do something about the massive waste of energy it is producing, many countries might follow China’s example and ban the mining of it. Next, looking at Bitcoin from an internal standpoint using the SWOT analysis to determine whether what they are doing is working. Starting with the strengths, we see that Bitcoin’s primary power lies in the fact that it was the first cryptocurrency that has grown to the point that it is seen as too big to fail. Due to this trust, many big businesses invest very large amounts of money into it, making it even harder for it to fade completely out of existence. There is also the reliability of the network; being proof of work means that the minting of the coins does have some value since the energy that was used is valuable. Looking at its weaknesses, the most glaring one is that it uses a ridiculous amount of energy, which is not sustainable for the environment. There is also the fact that the industry has become increasingly difficult to have a chance at receiving the coin from mining since competitors are using specialized equipment to guarantee their chances of receiving the prize. As far as opportunities available to Bitcoin, they could market themselves as something resisting change, which could be successful depending on the audience they market it to. Lastly, the threats they face are numerous, including the risk of bans for its environmental impact and a loss of interest due to it not upgrading its technology to match the modern age. </p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In conclusion, the evolution of cryptocurrency, particularly exemplified by Bitcoin, presents a critical juncture at the intersection of technological innovation, environmental sustainability, and market dynamics. The success and global impact of cryptocurrency underscore its potential to reshape financial landscapes. The contrasting approaches of proof of work and proof of stake in generating cryptocurrencies, as illustrated by Bitcoin and Ethereum, illuminate the complexities and choices faced by the industry. Ethereum’s successful transition to proof of stake demonstrates the feasibility of a more sustainable and energy-efficient model. In contrast, Bitcoin’s adherence to proof of work raises concerns about its environmental impact and regulatory risks, as evidenced by China’s ban on crypto mining. The hesitation to adopt an eco-friendlier approach, despite the clear benefits, places Bitcoin at a crossroads, with potential consequences for its global acceptance and regulatory standing. As the crypto industry navigates this pivotal moment, embracing sustainable practices and technological advancements becomes not only a strategic imperative but also a key driver for positive change, fostering growth, trust, and resilience in the evolving landscape of digital currencies.   ## References 1. Rho, E. (2022, May 11). The sustainability of bitcoin and its impact on the environment. Global Research and Consulting Group Insights. https://insights.grcglobalgroup.com/the-sustainability-of-bitcoin/</p>
+<ol start="2" type="1">
+<li><p>Jones, B. (2022, September 29). Technology: UNM researchers find bitcoin mining is environmentally unsustainable. UNM Newsroom. https://news.unm.edu/news/technology-unm-researchers-find-bitcoin-mining-is-environmentally-unsustainable</p></li>
+<li><p>The impact of cryptocurrencies on the environment. Bitstamp. (2023, August 25). https://www.bitstamp.net/learn/crypto-101/the-impact-of-cryptocurrencies-on-the-environment/</p></li>
+<li><p>Giles, Jones. (2022, May 13). Proof of Stake- The Environmental Impact. 2022 Issue of Computers and Law. https://www.scl.org/articles/12596-proof-of-stake-the-environmental-impact</p></li>
+<li><p>Castor, A. (2023, Feb 28). Ethereum moved to proof of stake. Why can’t Bitcoin?. MIT technology review. https://www.technologyreview.com/2023/02/28/1069190/ethereum-moved-to-proof-of-stake-why-cant-bitcoin/</p></li>
+<li><p>Browne, R. (2022, May 18). Bitcoin production roars back in China despite Beijing’s ban on crypto mining. CNBC. https://www.cnbc.com/2022/05/18/china-is-second-biggest-bitcoin-mining-hub-as-miners-go-underground.html#:~:text=Among%20the%20steps%20China%20took,and%20Kazakhstan%2C%20which%20borders%20China.</p></li>
+<li><p>Narain, Moretti. (2022, September). Regulating Crypto. F&amp;D Finance &amp; Development. https://www.imf.org/en/Publications/fandd/issues/2022/09/Regulating-crypto-Narain-Moretti#:~:text=Some%20countries%20(such%20as%20Japan,are%20at%20the%20drafting%20stage.</p></li>
+<li><p>Finder. (2022, Sep 30). Bitcoin Is a Store of Values. Nasdaq. https://www.nasdaq.com/articles/bitcoin-is-a-store-of-values</p></li>
+<li><p>Miller, H. (2022, Sep 19). The Merge Was a Success. Crypto Still Has Problems. Bloomberg. https://www.bloomberg.com/news/newsletters/2022-09-19/ethereum-s-merge-was-a-success-crypto-still-has-problems</p></li>
+<li><p>Lang , et al.&nbsp;(2023, Nov 3). The crypto market bears the scars of FTX’s collapse. Reuters. https://www.reuters.com/technology/crypto-market-still-bears-scars-ftxs-collapse-2023-10-03/#:~:text=CRUMBLING%20MARKET%20CAP,trillion%20most%20of%20this%20year. Leshno, Jacob and Strack, Philipp, Bitcoin: An Impossibility Theorem for Proof-of-Work Based Protocols (October 2019). Cowles Foundation Discussion Paper No.&nbsp;2204R, 2019, Available at SSRN: https://ssrn.com/abstract=3487355 or http://dx.doi.org/10.2139/ssrn.3487355</p></li>
+<li><p>Kapengut E, Mizrach B. An Event Study of the Ethereum Transition to Proof-of-Stake. Commodities. 2023; 2(2):96-110. https://doi.org/10.3390/commodities2020006</p></li>
+<li><p>Dilek, Ş. &amp; Furuncu, Y. (2019). Bitcoin Mining and Its Environmental Effects. Atatürk Üniversitesi İktisadi ve İdari Bilimler Dergisi , 33 (1) , 91-106 . Retrieved from https://dergipark.org.tr/en/pub/atauniiibd/issue/43125/423056</p></li>
+<li><p>Hong, E. (October 18, 2023). How Does Bitcoin Mining Work? Investopedia. https://www.investopedia.com/tech/how-does-bitcoin-mining-work/#:~:text=Bitcoin%20mining%20is%20the%20process,cryptographic%20number%20that%20matches%20criteria.</p></li>
+<li><p>Kelleher, J. (October 8, 2023). Why Do Bitcoins Have Value? Investopedia. https://www.investopedia.com/ask/answers/100314/why-do-bitcoins-have-value.asp</p></li>
+<li><p>Lielacher, A. (2023). What is Bitcoin halving and how does it affect BTC’s price? Axi. https://www.axi.com/int/blog/education/cryptocurrencies/bitcoin-halving#:~:text=Bitcoin%20halving%20events%20have%20historically,as%20a%20result%2C%20the%20price.</p></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
